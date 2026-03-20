@@ -13,8 +13,21 @@ os.environ["TAVILY_API_KEY"] = st.secrets["TAVILY_API_KEY"]
 
 # 页面设置
 st.set_page_config(page_title="AI 旅游管家", page_icon="✈️")
-st.title("✈️ 你的专属 AI 旅游管家")
-st.caption("基于 LangGraph + 智谱大模型构建 | 支持全网搜索与长效记忆")
+# ✨ 新的 UI 优化代码
+st.markdown("""
+    <style>
+    /* 隐藏顶部的 Streamlit 菜单栏，看起来更像原生 App */
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    /* 缩小手机端的顶部留白 */
+    .block-container {padding-top: 2rem;}
+    </style>
+    
+    <h3 style='text-align: center; margin-bottom: 5px;'>✈️ 你的专属 AI 旅游管家</h3>
+    <p style='text-align: center; color: gray; font-size: 0.85rem;'>
+        基于 LangGraph + 智谱大模型构建<br>支持全网搜索与长效记忆
+    </p>
+    """, unsafe_allow_html=True)
 
 # 初始化 Agent 和记忆
 if "agent_executor" not in st.session_state:
